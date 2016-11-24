@@ -32,7 +32,7 @@ $(document).on({
 			dataType:"json",
 			timeout:tiempo,
 			success: function(data) {
-				alert(JSON.stringify(data))
+				//alert(JSON.stringify(data))
 				if(data=="sesion"){
 					//location.reload();
 				}else{

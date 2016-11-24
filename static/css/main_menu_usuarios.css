@@ -1,0 +1,121 @@
+@charset "utf-8";
+/* CSS Document */
+#usuarios_fondo{
+	width:calc(100% - 40px);
+	margin:auto;
+	margin-top:20px;
+	background:#ffffff;
+	padding:10px;
+}
+.usuarios_row1, .usuarios_row2, .usuarios_row3, .usuarios_row4, .usuarios_row5, .usuarios_row6{
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.usuarios_row1{
+	width:calc(19% - 10px);
+	cursor:pointer;
+}
+.usuarios_row2{
+	width:calc(20% - 10px);
+	cursor:pointer;
+}
+.usuarios_row3{
+	width:calc(12% - 10px);
+	cursor:pointer;
+}
+.usuarios_row4{
+	width:calc(10% - 10px);
+	cursor:pointer;
+}
+.usuarios_row5{
+	width:calc(12% - 10px);
+	cursor:pointer;
+}
+.usuarios_row6{
+	width:calc(12% - 10px);
+	cursor:pointer;
+}
+.usuarios_row7{
+	width:calc(15% - 10px);
+}
+
+.usuarios_reg_row1{
+	width:calc(19% - 10px);
+}
+.usuarios_reg_row2{
+	width:calc(20% - 11px);
+}
+.usuarios_reg_row3{
+	width:calc(12% - 11px);
+}
+.usuarios_reg_row4{
+	width:calc(10% - 11px);
+}
+.usuarios_reg_row5{
+	width:calc(12% - 11px);
+}
+.usuarios_reg_row6{
+	width:calc(12% - 11px);
+}
+.usuarios_reg_row7{
+	width:calc(15% - 11px);
+	text-align:center;
+}
+.usuario_eliminar, .usuario_editar, .usuario_bloquear{
+	font-family: 'fontello';
+	font-size:26px;
+	cursor:pointer;
+	transition:all ease-in-out 0.2s;
+    padding: 5px;
+}
+.usuario_eliminar:hover{
+	color:#db4848;
+}
+/*
+.usuario_editar, .usuario_bloquear{
+	margin-left:5px;
+}
+*/
+.usuario_editar:hover{
+	color:#16a085;
+}
+.usuario_bloquear:hover{
+	color:#43a0df;
+}
+
+/* input */
+.usuario_input_form{
+    width: calc(100% - 8px);
+    padding: 4px;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    font-family: "OpenSans";
+    margin-top: 6px;
+	border: 1px solid #cccccc;
+	margin-bottom:0px;
+}
+.usuario_input_form:focus{
+	border: 1px solid #aaaaaa;
+}
+.usuarios_error_message{
+	background:#d24d57;
+	color:#FFFFFF;
+	font-size:12px;
+	width: calc(100% - 8px);
+    padding: 2px 4px 2px 4px;
+	border: 1px solid #d24d57;
+	font-family: "OpenSansLight";
+}
+
+@media only screen and (max-width:768px){
+	#sistema_registros_mascara {
+		overflow-x:scroll;
+	}
+	#sistema_registros{
+		width:300%;
+	}
+}

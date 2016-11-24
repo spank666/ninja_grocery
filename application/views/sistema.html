@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ninja Grocery - Sistema</title>
+<!-- Viewport -->
+<link rel="shortcut icon" href="../static/imagenes/fav/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" > 
+<meta name="apple-mobile-web-app-capable" content="yes" >
+
+<!-- Hojas de estilo -->
+<link rel="stylesheet" href="../static/css/sistema.css" type="text/css" media="all" >
+
+<!-- Scripts -->
+<script src="../static/js/jquery-2.2.4.min.js"></script>
+<script src="../static/js/sistema.js"></script>
+</head>
+
+<body>
+	<!-- Animacion de precarga para los menus y contenido de la pagina -->
+	<div id="sistema_precarga">
+    	<div id="sistema_gif"></div>
+    </div>
+    <!-- PopUp -->
+    <div id="sistema_popup">
+    	<div id="sistema_ventanaModal">
+        	<div id="sistema_modalTitulo">
+                    
+            </div>
+            <div id="sistema_modalContenido">
+                
+            </div>
+        </div>
+    </div>
+    <!-- Mascara para contenido principal -->
+    <div id="sistema_mascara">
+    	<!-- Header -->
+        <div id="sistema_header">
+        	<div id="sistema_header_left">
+            	<div id="sistema_menu_plus">&#xee81e;</div>
+	        	<img src="../static/imagenes/logo/logo.png" id="sistema_logo">
+                <div id="sistema_menu_button" data-pos="0">&#xe82d;</div>
+            </div>
+            <div id="sistema_header_right">
+            	<div id="sistema_logout" class="sistema_top_menu">
+                	<div class="sistema_button_icon">&#xe82f;</div>
+                	<div class="sistema_button_title">Salir</div>
+                </div>
+                <div id="sistema_lock" class="sistema_top_menu">
+                	<div class="sistema_button_icon">&#xe80b;</div>
+                	<div class="sistema_button_title">Bloquear</div>
+                </div>
+            </div>
+        </div>
+        <!-- Content -->
+        <div id="sistema_content">
+        	<div id="sistema_contenido">
+            </div>
+        	<div id="sistema_menu_bar">
+            	<!-- Datos de perfil -->
+            	<div id="sistema_perfil">
+                	<div id="sistema_imagen_perfil"></div>
+                    <div id="sistema_welcome">
+                    	<div id="sistema_bienvenida">Bienvenid@,</div>
+                    	<div id="sistema_persona"></div>
+                    	<div id="sistema_nivel"></div>
+                    </div>
+                </div>
+                <!-- Submenu (menu, perfil y notificaciones) -->
+                <div id="sistema_submenu">
+                	<div id="sistema_menu" class="sistema_sub_select" style="border-bottom:1px solid #16a085;color:#16a085;">&#xf0c9;</div>
+                	<div id="sistema_chat" class="sistema_sub_select">&#xf0e5;</div>
+                	<div id="sistema_notificaciones" class="sistema_sub_select">&#xe817;</div>
+                </div>
+                <!-- Menu de navegacion (3 menus desplazables) -->
+                <div id="sistema_navegacion">
+                	<div id="sistema_subnavegacion">
+                    	<div id="sistema_nav_menu">
+                        	<div class="sistema_nav_title">MENÚ</div>
+                        </div>
+                        <div id="sistema_nav_perfil">
+                        	<div class="sistema_nav_title">PERFÍL</div>
+                        </div>
+                        <div id="sistema_nav_notificaciones">
+                        	<div class="sistema_nav_title">NOTIFICACIONES</div>
+                        </div>
+                    </div>
+                </div>
+            </div>          
+        </div>
+    </div>
+</body>
+</html>

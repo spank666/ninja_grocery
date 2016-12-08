@@ -88,7 +88,7 @@
 
 /* input */
 .usuario_input_form{
-    width: calc(100% - 8px);
+    width: calc(100% - 10px);
     padding: 4px;
     font-size: 14px;
     color: #333;
@@ -101,14 +101,73 @@
 .usuario_input_form:focus{
 	border: 1px solid #aaaaaa;
 }
+/* select */
+select {
+    padding:4px;
+    margin-top:6px;
+    background: #fff;
+    color:#666666;
+	font-size: 14px;
+    border: 1px solid #cccccc;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    width: 100%;
+	font-family: "OpenSans";
+}
+label {position:relative; }
+label:after {
+    font-family: 'fontello';
+    content: "\e827";
+    font-size: 14px;
+    color:#666666;
+    right:8px; top:5px;
+    padding:0 0 2px;
+    position:absolute;
+    pointer-events:none;
+}
+label:before {
+    content:'';
+    right:4px; top:0px;
+    width:18px; height:23px;
+	line-height:23px;
+    background:#fff;
+    position:absolute;
+    pointer-events:none;
+    display:block;
+}
+
 .usuarios_error_message{
 	background:#d24d57;
 	color:#FFFFFF;
 	font-size:12px;
-	width: calc(100% - 8px);
     padding: 2px 4px 2px 4px;
 	border: 1px solid #d24d57;
 	font-family: "OpenSansLight";
+}
+
+#usuario_panel_izquierdo, #usuario_panel_derecho{
+	float:left;
+}
+#usuario_panel_derecho{
+	width:calc(50% - 15px);
+	margin-left:15px;
+}
+#usuario_panel_izquierdo{
+	width:50%;
+}
+
+#usuario_add{
+	clear:both;
+}
+.usuarios_margenTitulo{
+	margin-top:12px;
+}
+.usuarios_responsiveModal{
+	width:700px;
+	height:506px;
 }
 
 @media only screen and (max-width:768px){

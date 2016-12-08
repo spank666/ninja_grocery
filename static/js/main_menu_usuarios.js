@@ -6,7 +6,7 @@ $(document).on({
 											<span id="sistema_triangulo"></span>\
 											<div class="sistema_nav_button" id="usuarios_agregar">Agregar</div>\
 									  </div>\
-									 \<div id="usuarios_fondo">\
+									  <div id="usuarios_fondo">\
 											<div id="sistema_panel_filtro">\
 												<input type="text" placeholder="Buscar" class="sistema_input_filter" id="sistema_filter">\
 											</div>\
@@ -115,18 +115,50 @@ $(document).on({
 					sistema_loading_hide();
 					},250);
 		*/
-        $("#sistema_ventanaModal").removeAttr("class").addClass("responsive_userModal").fadeIn(500);
+        $("#sistema_ventanaModal").removeAttr("class").addClass("usuarios_responsiveModal").fadeIn(500);
 		$("#sistema_popup").fadeIn(250);
                 
         $("#sistema_modalTitulo").html('Agregar Usuario\
-                    <div id="sistema_modalCerrar">&#xe807;</div>');
-		$("#sistema_modalContenido").html('<div>Usuario <span class="sistema_campo_obligatorio">*</span></div>\
-										   <input type="text" class="usuario_input_form" style="border: 1px solid #d24d57;">\
-										   <div class="usuarios_error_message">Debes ingresar un usuario valido, por favor.</div>\
+                    					<div id="sistema_modalCerrar">&#xe807;</div>');
+		$("#sistema_modalContenido").html('<div id="usuario_panel_izquierdo">\
+											   <div>Usuario <span class="sistema_campo_obligatorio">*</span></div>\
+											   <input type="text" class="usuario_input_form" style="border: 1px solid #d24d57;">\
+											   <div class="usuarios_error_message">Debes ingresar un usuario valido, por favor.</div>\
+											   <div class="usuarios_margenTitulo">Contraseña <span class="sistema_campo_obligatorio">*</span></div>\
+											   <input type="password" class="usuario_input_form">\
+											   <div class="usuarios_margenTitulo">Repetir Contraseña <span class="sistema_campo_obligatorio">*</span></div>\
+											   <input type="password" class="usuario_input_form">\
+											   <div class="usuarios_margenTitulo">Nombre <span class="sistema_campo_obligatorio">*</span></div>\
+											   <input type="text" class="usuario_input_form">\
+											   <div class="usuarios_margenTitulo">Apellidos <span class="sistema_campo_obligatorio">*</span></div>\
+											   <input type="text" class="usuario_input_form">\
+											   <div class="usuarios_margenTitulo">Nivel <span class="sistema_campo_obligatorio">*</span></div>\
+												<label class="select">\
+													<select class="usuario_select_form"><option>x</option></select>\
+												</label>\
+										   </div>\
+										   <div id="usuario_panel_derecho">\
+										   		<div>Sucursal <span class="sistema_campo_obligatorio">*</span></div>\
+												<label class="select">\
+												<select class="usuario_select_form"><option>x</option></select>\
+												</label>\
+												<div class="usuarios_margenTitulo">Telefono <span class="sistema_campo_obligatorio">*</span></div>\
+												<input type="text" class="usuario_input_form">\
+												<div class="usuarios_margenTitulo">Correo <span class="sistema_campo_obligatorio">*</span></div>\
+												<input type="text" class="usuario_input_form">\
+												<div class="usuarios_margenTitulo">Calle <span class="sistema_campo_obligatorio">*</span></div>\
+												<input type="text" class="usuario_input_form">\
+												<div class="usuarios_margenTitulo">Colonia <span class="sistema_campo_obligatorio">*</span></div>\
+												<input type="text" class="usuario_input_form">\
+												<div class="usuarios_margenTitulo">Estado <span class="sistema_campo_obligatorio">*</span></div>\
+												<input type="text" class="usuario_input_form">\
+										   </div>\
+										   <div class="sistema_fixSpace"></div>\
 										   <div id="usuario_add" class="sistema_button_round" data-nombre="Agregar">\
 												Agregar\
 										   </div>');
-		/*var datos=new FormData();
+		/*
+		var datos=new FormData();
 		datos.append("usuario",'spank');
 		datos.append("sucursal",JSON.stringify({"user":"hard","pass":"ass"}));
                     

@@ -685,8 +685,6 @@ input{
 	margin:auto;
 	background:#ffffff;
 	display:none;
-	width:80%;
-	height:80%;
 }
 #sistema_modalTitulo{
 	width:100%;
@@ -741,7 +739,7 @@ input{
 }
 .sistema_button_round{
 	font-family: "OpenSans";
-	margin: 20px auto auto auto;
+	margin: auto;
     width: 200px;
     height: 30px;
     line-height: 30px;
@@ -821,6 +819,10 @@ input{
 	background:#16a085;
 	border-color:#16a085;
 	cursor:default;
+}
+.sistema_fixSpace{
+	clear:both;
+	height:12px;
 }
 /*
 #sistema_cargando_label{

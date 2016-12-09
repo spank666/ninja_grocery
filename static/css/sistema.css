@@ -672,16 +672,12 @@ input{
 	right:0;
 	top:0;
 	bottom:0;
-	background:rgba(0,0,0,0.6);
+	background:rgba(0,0,0,0.7);
 	z-index: 90;
 	display:none;
+	overflow: auto;
 }
 #sistema_ventanaModal{
-	position:fixed;
-	left:0;
-	right:0;
-	top:0;
-	bottom:0;
 	margin:auto;
 	background:#ffffff;
 	display:none;
@@ -699,16 +695,15 @@ input{
 }
 #sistema_modalContenido{
 	height: calc(100% - 58px);
-    overflow: auto;
     color: #333;
     padding: 10px;
 	font-size: 16px;
 	font-family: 'OpenSans', sans-serif;
 }
 #sistema_modalCerrar{
-	position: absolute;
-    top: 3px;
-    right: 10px;
+	float:right;
+    margin-top: 3px;
+    margin-right: 10px;
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -823,6 +818,12 @@ input{
 .sistema_fixSpace{
 	clear:both;
 	height:12px;
+}
+#sistema_margenModalBottom{
+	height:20px;
+}
+#sistema_margenModalTop{
+	height:20px;
 }
 /*
 #sistema_cargando_label{

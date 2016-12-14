@@ -10,19 +10,17 @@ $(document).on({
 											<div id="sistema_panel_filtro">\
 												<input type="text" placeholder="Buscar" class="sistema_input_filter" id="sistema_filter">\
 											</div>\
-											<div id="sistema_registros_mascara">\
-												<div id="sistema_registros">\
-													<div id="sistema_table">\
-														<div class="usuarios_row1">Nombre<span class="sistema_order" data-order="0">&#xe824;</span></div>\
-														<div class="usuarios_row2">Apellido<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
-														<div class="usuarios_row3">Usuario<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
-														<div class="usuarios_row4">Nivel<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
-														<div class="usuarios_row5">Telefono<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
-														<div class="usuarios_row6">Correo<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
-														<div class="usuarios_row7"></div>\
-													</div>\
-													<div id="sistema_order_by"></div>\
+											<div id="sistema_tablaResponsiva">\
+												<div id="sistema_table">\
+													<div class="usuarios_row1">Nombre<span class="sistema_order" data-order="0">&#xe824;</span></div>\
+													<div class="usuarios_row2">Apellido<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
+													<div class="usuarios_row3">Usuario<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
+													<div class="usuarios_row4">Nivel<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
+													<div class="usuarios_row5">Telefono<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
+													<div class="usuarios_row6">Correo<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
+													<div class="usuarios_row7"></div>\
 												</div>\
+												<div id="sistema_order_by"></div>\
 											</div>\
 									  </div>');
 		

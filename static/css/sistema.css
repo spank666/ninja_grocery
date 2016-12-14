@@ -590,9 +590,12 @@ input{
 	background:#f1f1f1;
 }
 
-#sistema_registros_mascara{
+#sistema_order_by{
 	max-height:740px;
 	overflow:hidden;
+}
+#sistema_tablaResponsiva{
+	overflow-x: auto;
 }
 #sistema_registros{
 }
@@ -609,6 +612,7 @@ input{
 	font-size:14px;
 	padding:5px;
 }
+
 .sistema_input_filter:focus{
 	border: 1px solid #aaaaaa;
 }
@@ -832,6 +836,11 @@ input{
 */
 
 /* Responsive Web Design */
+@media only screen and (max-width:1024px){
+	#sistema_tablaResponsiva{
+		border:1px solid #16a085;
+	}
+}
 @media only screen and (max-width:768px){
 	#sistema_contenido{
 		width:100%;
@@ -852,13 +861,14 @@ input{
 		border-right:1px solid #16a085;
 		border-bottom:1px solid #16a085;
 	}
+	/*
 	.sistema_row_registro{
 		border-left:none;
 		border-right:none;
 	}
 	.sistema_row_registro:last-child{
 		border-bottom:none;
-	}
+	}*/
 }
 @media only screen and (max-width:391px){
 	/*#sistema_contenido{

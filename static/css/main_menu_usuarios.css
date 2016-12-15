@@ -219,12 +219,12 @@ label:before {
 	}
 }
 @media only screen and (max-width:1024px){
-	#sistema_table, #sistema_order_by{
+	#sistema_table, #sistema_order_mascara{
 		width:1200px;
 	}
 }
 @media only screen and (max-width:768px){
-	#sistema_table, #sistema_order_by{
+	#sistema_table, #sistema_order_mascara{
 		width:768px;
 	}
 }

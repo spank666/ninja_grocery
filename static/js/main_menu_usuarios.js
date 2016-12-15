@@ -20,9 +20,25 @@ $(document).on({
 													<div class="usuarios_row6">Correo<span class="sistema_order" data-order="0">&#xe824;</span>\</div>\
 													<div class="usuarios_row7"></div>\
 												</div>\
-												<div id="sistema_order_by"></div>\
+												<div id="sistema_order_mascara">\
+													<div id="sistema_order_by"></div>\
+												</div>\
 											</div>\
-									  </div>');
+											<div style="height:8px;"></div>\
+											<div id="access_pagination" data-actual="0">\
+												<button class="arrow_left arrow_disabled" id="access_prev_p">\
+													<i></i>\
+													<i></i>\
+												</button>\
+												<span id="pagination_position"></span>\
+												<button class="arrow_right" id="access_next_p">\
+													<i></i>\
+													<i></i>\
+												</button>\
+												<div style="height:15px;"></div>\
+											</div>\
+									  </div>\
+									  <div id="sistema_fixBottom"></div>');
 		
 		$.ajax({
 			type: 'POST',
@@ -35,14 +51,14 @@ $(document).on({
 					//location.reload();
 				}else{
 					var contenido='';
-					for(var i=0;data.length>i;i++){
+					for(var i=0;90>i;i++){
 						contenido+='<div class="sistema_row_registro">\
-										<div class="usuarios_reg_row1">'+data[i].nombre+'</div>\
-										<div class="usuarios_reg_row2">'+data[i].apellido+'</div>\
-										<div class="usuarios_reg_row3">'+data[i].usuario+'</div>\
-										<div class="usuarios_reg_row4">'+data[i].nivel+'</div>\
-										<div class="usuarios_reg_row5">'+data[i].telefono+'</div>\
-										<div class="usuarios_reg_row6">'+data[i].correo+'</div>\
+										<div class="usuarios_reg_row1">'+data[0].nombre+i+'</div>\
+										<div class="usuarios_reg_row2">'+data[0].apellido+'</div>\
+										<div class="usuarios_reg_row3">'+data[0].usuario+'</div>\
+										<div class="usuarios_reg_row4">'+data[0].nivel+'</div>\
+										<div class="usuarios_reg_row5">'+data[0].telefono+'</div>\
+										<div class="usuarios_reg_row6">'+data[0].correo+'</div>\
 										<div class="usuarios_reg_row7">\
 											<span class="usuario_eliminar">&#xe81a;</span>\
 											<span class="usuario_editar">&#xe815;</span>\
@@ -52,6 +68,7 @@ $(document).on({
 					}
 					$("#sistema_order_by").html(contenido);
 					sistema_loading_hide();
+					calcular_paginacion_access();
 				}
 			},
 			error: function (xhr, ajaxOptions, thrownError) {
@@ -188,3 +205,93 @@ $(document).on({
 		},3000);
 	}
 },"#usuario_add");
+
+$(document).on({
+    click:function(){
+        if(parseInt($("#access_pagination").data("actual"))>0){
+            var movimiento=740;
+            var pagina=parseInt($("#access_pagination").data("actual"))-1;
+            $("#access_pagination").data("actual",pagina)
+            $("#sistema_order_by").css({'transform':'translate3d(0px,-'+movimiento*pagina+'px,0px)'});
+            $("#pagination_position").html((pagina+1)+" / "+$("#access_pagination").data("total"));
+            pagination_hd_access();
+        }
+    }
+},"#access_prev_p");
+
+$(document).on({
+    click:function(){
+        //alert(parseInt($("#access_pagination").data("actual"))+" - "+parseInt($("#access_pagination").data("total")))
+        if(parseInt($("#access_pagination").data("actual"))<(parseInt($("#access_pagination").data("total")))-1){
+            
+            var movimiento=740;
+            var pagina=parseInt($("#access_pagination").data("actual"))+1;
+            //alert($("#access_pagination").data("total"))
+            $("#access_pagination").data("actual",pagina)
+            
+            $("#sistema_order_by").css({'transform':'translate3d(0px,-'+movimiento*pagina+'px,0px)'});
+            $("#pagination_position").html((pagina+1)+" / "+$("#access_pagination").data("total"));
+            pagination_hd_access();
+        }
+    }
+},"#access_next_p");
+
+function pagination_hd_access(){
+    if(parseInt($("#access_pagination").data("actual"))==0){
+        $("#access_prev_p").addClass("arrow_disabled");
+    }else{
+        $("#access_prev_p").removeClass("arrow_disabled");
+    }
+    if(parseInt($("#access_pagination").data("actual"))==(parseInt($("#access_pagination").data("total"))-1)){
+        $("#access_next_p").addClass("arrow_disabled");
+		alert("ultima pagina")
+    }else{
+        $("#access_next_p").removeClass("arrow_disabled");
+    }
+}
+
+function calcular_paginacion_access(){
+    var contar_filas=0;
+    $(".sistema_row_registro").each(function(){
+        if($(this).is(":visible")){
+            contar_filas++;
+        }
+    });
+    if(contar_filas>20){
+        $("#access_pagination").css({"display":"block"});
+    }else{
+        $("#access_pagination").removeAttr("style");
+    }
+    
+    var c_pag=0;
+    if(contar_filas % 20 === 0){
+        c_pag=contar_filas/20;
+    }else{
+        c_pag=parseInt(contar_filas/20);
+        c_pag+=1;
+    }
+
+    $("#access_pagination").data("total",c_pag);
+    $("#pagination_position").html("1 / "+parseInt(c_pag));
+}
+
+$(document).on({
+	keyup:function(){
+		$("#sistema_order_by").removeAttr("style");
+		
+		$(".sistema_row_registro").hide();
+		var data = this.value;
+	
+		$(".sistema_row_registro").filter(function (i, v) {
+			var $t = $(this);
+			if($t.is(":containsIN('" + data + "')")){
+				$t.closest(".sistema_row_registro").show();
+			}
+		});
+		$("#access_pagination").data("actual",0);
+        //pagination_hd_access()
+		$("#access_prev_p").addClass("arrow_disabled");
+		$("#access_next_p").removeClass("arrow_disabled")
+        calcular_paginacion_access();
+	}
+},"#sistema_filter");

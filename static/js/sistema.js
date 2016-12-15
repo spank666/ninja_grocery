@@ -142,6 +142,7 @@ $.extend($.expr[":"], {"containsIN": function(elem, i, match, array) {
 });
 
 //Filtrar
+/*
 $(document).on({
 	keyup:function(){
 		$("#sistema_registros").removeAttr("style");
@@ -157,7 +158,7 @@ $(document).on({
 		});
 	}
 },"#sistema_filter");
-
+*/
 $(document).on({
 	click:function(){
 		$("#sistema_ventanaModal").fadeOut(250);

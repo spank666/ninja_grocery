@@ -137,8 +137,8 @@ $(document).on({
                     					<div id="sistema_modalCerrar">&#xe807;</div>');
 		$("#sistema_modalContenido").html('<div id="usuario_panel_izquierdo">\
 											   <div>Usuario <span class="sistema_campo_obligatorio">*</span></div>\
-											   <input type="text" class="usuario_input_form" style="border: 1px solid #d24d57;">\
-											   <div class="usuarios_error_message">Debes ingresar un usuario valido, por favor.</div>\
+											   <input type="text" class="usuario_input_form" >\
+											   <div class="usuarios_error_message" style="display:none;">Debes ingresar un usuario valido, por favor.</div>\
 											   <div class="usuarios_margenTitulo">Contraseña <span class="sistema_campo_obligatorio">*</span></div>\
 											   <input type="password" class="usuario_input_form">\
 											   <div class="usuarios_margenTitulo">Repetir Contraseña <span class="sistema_campo_obligatorio">*</span></div>\
@@ -157,22 +157,22 @@ $(document).on({
 												<label class="select">\
 												<select class="usuario_select_form"><option>x</option></select>\
 												</label>\
-												<div class="usuarios_margenTitulo">Telefono <span class="sistema_campo_obligatorio">*</span></div>\
+												<div class="usuarios_margenTitulo">Telefono</div>\
 												<input type="text" class="usuario_input_form">\
-												<div class="usuarios_margenTitulo">Correo <span class="sistema_campo_obligatorio">*</span></div>\
+												<div class="usuarios_margenTitulo">Correo</div>\
 												<input type="text" class="usuario_input_form">\
-												<div class="usuarios_margenTitulo">Calle <span class="sistema_campo_obligatorio">*</span></div>\
+												<div class="usuarios_margenTitulo">Calle</div>\
 												<input type="text" class="usuario_input_form">\
-												<div class="usuarios_margenTitulo">Colonia <span class="sistema_campo_obligatorio">*</span></div>\
+												<div class="usuarios_margenTitulo">Colonia</div>\
 												<input type="text" class="usuario_input_form">\
-												<div class="usuarios_margenTitulo">Estado <span class="sistema_campo_obligatorio">*</span></div>\
+												<div class="usuarios_margenTitulo">Estado</div>\
 												<input type="text" class="usuario_input_form">\
 										   </div>\
 										   <div class="sistema_fixSpace"></div>\
 										   <div id="usuario_add" class="sistema_button_round" data-nombre="Agregar">\
 												Agregar\
 										   </div>');
-		/*
+		/*<!--style="border: 1px solid #d24d57;"-->
 		var datos=new FormData();
 		datos.append("usuario",'spank');
 		datos.append("sucursal",JSON.stringify({"user":"hard","pass":"ass"}));
@@ -209,6 +209,7 @@ $(document).on({
 $(document).on({
     click:function(){
         if(parseInt($("#access_pagination").data("actual"))>0){
+			$("#sistema_order_mascara").removeAttr("style");
             var movimiento=740;
             var pagina=parseInt($("#access_pagination").data("actual"))-1;
             $("#access_pagination").data("actual",pagina)
@@ -244,7 +245,17 @@ function pagination_hd_access(){
     }
     if(parseInt($("#access_pagination").data("actual"))==(parseInt($("#access_pagination").data("total"))-1)){
         $("#access_next_p").addClass("arrow_disabled");
-		alert("ultima pagina")
+		var contar_filas=$(".sistema_row_registro:visible").length;
+		
+		var c_pag=0;
+		if(contar_filas % 20 === 0){
+			c_pag=contar_filas/20;
+		}else{
+			c_pag=parseInt(contar_filas/20);
+		}
+		var nuevo_t=contar_filas-(c_pag*20);
+		$("#sistema_order_mascara").css({"height":(nuevo_t*37)+"px"});
+		
     }else{
         $("#access_next_p").removeClass("arrow_disabled");
     }
@@ -277,6 +288,7 @@ function calcular_paginacion_access(){
 
 $(document).on({
 	keyup:function(){
+		$("#sistema_order_mascara").removeAttr("style");
 		$("#sistema_order_by").removeAttr("style");
 		
 		$(".sistema_row_registro").hide();

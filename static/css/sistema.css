@@ -570,7 +570,7 @@ input{
 	border-right:1px solid #cccccc;
 	font-family: "OpenSans";
 	font-size:15px;
-	color:#666666;
+	color:#333333;
 }
 .sistema_row_registro > div{
 	float:left;
@@ -837,6 +837,7 @@ input{
 #access_pagination{
     text-align: center;
     display: none;
+	height: 36px;
 }
 .arrow_left{
     appearance: none;
@@ -957,6 +958,10 @@ input{
 	#sistema_tablaResponsiva{
 		border:1px solid #16a085;
 	}
+	.sistema_row_registro{
+		border-left:none;
+		border-right:none;
+	}
 }
 @media only screen and (max-width:768px){
 	#sistema_contenido{
@@ -978,11 +983,9 @@ input{
 		border-right:1px solid #16a085;
 		border-bottom:1px solid #16a085;
 	}
+	
+	
 	/*
-	.sistema_row_registro{
-		border-left:none;
-		border-right:none;
-	}
 	.sistema_row_registro:last-child{
 		border-bottom:none;
 	}*/

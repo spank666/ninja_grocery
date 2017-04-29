@@ -1,0 +1,2 @@
+CREATE PROCEDURE usuarios_bloquearUsuario(arg_id int(11))
+UPDATE usuarios SET status=0 WHERE id=arg_id

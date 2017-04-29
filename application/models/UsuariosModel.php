@@ -14,10 +14,10 @@ class usuariosModel extends CI_Model {
     }
     
     public function usuarios(){
-        return $this->db->query("SELECT usuarios.nombre, usuarios.apellido, usuarios.usuario, usuarios.status, niveles.nombre as nivel, usuarios.telefono, usuarios.correo
-				FROM usuarios
-                                    LEFT JOIN niveles ON usuarios.id_nivel=niveles.id
-                        	WHERE usuarios.usuario!='spank'")->result();
+        return $this->db->query("SELECT a.nombre, a.apellido, a.usuario, a.status, b.nombre as nivel, a.telefono, a.correo
+								 FROM usuarios a
+                                    LEFT JOIN niveles b ON a.id_nivel=b.id
+                        	     WHERE a.usuario!='spank' AND a.status!=2")->result();
     }
     
     public function usuarioCompleto($arg){

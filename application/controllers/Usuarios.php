@@ -3,83 +3,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class usuarios extends CI_Controller {
 
-	/*
-		* Index Page for this controller.
-		*
-		* Maps to the following URL
-		* 		http://example.com/index.php/welcome
-		*	- or -
-		* 		http://example.com/index.php/welcome/index
-		*	- or -
-		* Since this controller is set as the default controller in
-		* config/routes.php, it's displayed at http://example.com/
-		*
-		* So any other public methods not prefixed with an underscore will
-		* map to /index.php/welcome/<method_name>
-		* @see https://codeigniter.com/user_guide/general/urls.html
-	*/
 	function __construct(){
 		// Call the Model constructor
 		parent::__construct();
+		switch ($this->revisar_sesion()) {
+			case "sesion":
+				echo json_encode("sesion");
+				exit;
+			break;
+			case "permiso":
+				echo json_encode("permiso");
+				exit;
+			break;
+		}
 		$this->load->helper('url');
 		$this->load->model('usuariosModel');
 	}
     
 	
 	public function niveles(){
-		if($this->revisar_sesion()){
-			echo str_repeat(' ', 40000);
-			
-			ob_start('ob_gzhandler');
-			
-			
-			ob_end_flush();
-			ob_flush();
-			flush();
-			$result=$this->usuariosModel->niveles();
-			echo json_encode($result);
-		}else{
-			echo json_encode("sesion");
-		}
+		$result=$this->usuariosModel->niveles();
+		echo json_encode($result);
 	}
         
 	public function usuarios(){
-		switch ($this->revisar_sesion()) {
-			case "sesion":
-				echo json_encode("sesion");
-			break;
-			case "permiso":
-				echo json_encode("permiso");
-			break;
-			case "true":
-				echo str_repeat(' ', 40000);
 				ob_start('ob_gzhandler');
-				
 				$result=$this->usuariosModel->usuarios();
-				
-				ob_end_flush();
-				ob_flush();
-				flush();
 				echo json_encode($result);
-			break;
-		}
+				header("X-Content-Length: ".ob_get_length()."\r\n");
+				ob_end_flush();
+				/*
+				ob_start();
+				ob_start('ob_gzhandler');
+				$resultado=$this->usuariosModel->usuarios();
+				$nuevo_resultado=array_merge($resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado,$resultado);
+				echo json_encode($nuevo_resultado,JSON_UNESCAPED_UNICODE);
+				$len=ob_get_length();
+				ob_end_flush();
+				header('Content-Length: '.ob_get_length()."\r\n");
+				header('Accept-Ranges: bytes'."\r\n");
+				header("X-Content-Length: ".$len."\r\n");
+				ob_end_flush();
+				*/
 	}
         
-        public function usuarioCompleto(){
-            if($this->revisar_sesion()){
-                echo str_repeat(' ', 40000);
-                
-                ob_start('ob_gzhandler');
-                
-                
-                ob_end_flush();
-                ob_flush();
-                flush();
-                $result=$this->usuariosModel->usuarioCompleto($this->input->post("id"));
-                echo json_encode($result);
-            }else{
-                echo json_encode("sesion");
-            }
+	public function usuarioCompleto(){
+		$result=$this->usuariosModel->usuarioCompleto($this->input->post("id"));
+		echo json_encode($result);
 	}
         
         public function insertarUsuario(){
@@ -97,7 +67,7 @@ class usuarios extends CI_Controller {
 
             //$this->form_validation->set_message('min_length', 'El Campo %s debe tener un Minimo de %d Caracteres');
 
-            if($this->revisar_sesion()){
+            
                 if($this->form_validation->run() == FALSE){
                     echo json_encode("validation");
                 }else{
@@ -105,9 +75,7 @@ class usuarios extends CI_Controller {
                     $result=$this->usuariosModel->insertarUsuario();
                     echo json_encode($result);
                 }
-            }else{
-                echo json_encode("sesion");
-            }
+
         }
         
         public function modificarUsuario(){
@@ -124,7 +92,6 @@ class usuarios extends CI_Controller {
 
             //$this->form_validation->set_message('min_length', 'El Campo %s debe tener un Minimo de %d Caracteres');
 
-            if($this->revisar_sesion()){
                 if($this->form_validation->run() == FALSE){
                     echo json_encode("validation");
                 }else{
@@ -132,36 +99,21 @@ class usuarios extends CI_Controller {
                     $result=$this->usuariosModel->modificarUsuario();
                     echo json_encode($result);
                 }
-            }else{
-                echo json_encode("sesion");
-            }
         }
         
         function bloquearUsuario(){
-            if($this->revisar_sesion()){
                 $result=$this->usuariosModel->bloquearUsuario();
                 echo json_encode($result);
-            }else{
-                echo json_encode("sesion");
-            }
         }
         
         function eliminarUsuario(){
-            if($this->revisar_sesion()){
                 $result=$this->usuariosModel->eliminarUsuario();
                 echo json_encode($result);
-            }else{
-                echo json_encode("sesion");
-            }
         }
         
         function sucursales(){
-            if($this->revisar_sesion()){
                 $result=$this->usuariosModel->sucursales();
                 echo json_encode($result);
-            }else{
-                echo json_encode("sesion");
-            }
         }
 		
 	function revisarme(){

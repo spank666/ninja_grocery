@@ -6,55 +6,42 @@ class sistema extends CI_Controller {
 	function __construct(){
 		// Call the Model constructor
 		parent::__construct();
+		
 		$this->load->helper('url');
+		switch ($this->revisar_sesion()) {
+			case "sesion":
+				redirect(base_url());
+				exit;
+			break;
+		}
 		$this->load->model('sistemaModel');
 	}
     
 	public function index(){
-		if($this->session->userdata('usuario')){
-			echo str_repeat(' ', 40000);			
-			ob_start();
-			ob_end_flush();
-			ob_flush();
-			flush();
+			ob_start('ob_gzhandler');
 			$this->load->view('sistema.html');
-		}else{
-			redirect(base_url());
-		}
+			ob_end_flush();
 	}
         
     public function menu(){
-    	if($this->revisar_sesion()){
-			echo str_repeat(' ', 40000);
-			ob_start();
-			$result=$this->sistemaModel->menu();
-			ob_end_flush();
-			ob_flush();
-			flush();
-			
-			echo json_encode($result);
+		ob_start('ob_gzhandler');
+		$result=$this->sistemaModel->menu();
+		echo json_encode($result);
+		ob_end_flush();
+	}
+        
+	public function perfil(){
+		ob_start('ob_gzhandler');
+		$result=$this->sistemaModel->perfil();
+		echo json_encode($result);
+		ob_end_flush();
+	}
+        
+	private function revisar_sesion(){
+		if($this->session->userdata('usuario')){
+			return "true";
 		}else{
-			echo json_encode("sesion");
+			return "sesion";
 		}
 	}
-        
-        public function perfil(){
-            if($this->revisar_sesion()){
-                echo str_repeat(' ', 40000);
-                ob_start('ob_gzhandler');
-                
-                $result=$this->sistemaModel->perfil();
-                
-                ob_end_flush();
-                ob_flush();
-                flush();
-                echo json_encode($result);
-            }else{
-                echo json_encode("sesion");
-            }
-	}
-        
-        private function revisar_sesion(){
-            return $this->session->userdata('usuario');
-        }
 }

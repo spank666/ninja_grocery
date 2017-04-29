@@ -46,21 +46,22 @@ $(document).on({
 			dataType:"json",
 			timeout:tiempo,
 			success: function(data) {
-				//alert(JSON.stringify(data))
+				//alert(JSON.stringify(data));
+				if(data=="permiso"){}
 				if(data=="sesion"){
-					//location.reload();
+					location.reload();
 				}else{
 					var contenido='';
-					for(var i=0;90>i;i++){
+					for(var i=0;data.length>i;i++){
 						contenido+='<div class="sistema_row_registro">\
-										<div class="usuarios_reg_row1">'+data[0].nombre+i+'</div>\
-										<div class="usuarios_reg_row2">'+data[0].apellido+'</div>\
-										<div class="usuarios_reg_row3">'+data[0].usuario+'</div>\
-										<div class="usuarios_reg_row4">'+data[0].nivel+'</div>\
-										<div class="usuarios_reg_row5">'+data[0].telefono+'</div>\
-										<div class="usuarios_reg_row6">'+data[0].correo+'</div>\
+										<div class="usuarios_reg_row1">'+data[i].nombre+'</div>\
+										<div class="usuarios_reg_row2">'+data[i].apellido+'</div>\
+										<div class="usuarios_reg_row3">'+data[i].usuario+'</div>\
+										<div class="usuarios_reg_row4">'+data[i].nivel+'</div>\
+										<div class="usuarios_reg_row5">'+data[i].telefono+'</div>\
+										<div class="usuarios_reg_row6">'+data[i].correo+'</div>\
 										<div class="usuarios_reg_row7">\
-											<span class="usuario_eliminar">&#xe81a;</span>\
+											<!--<span class="usuario_eliminar">&#xe81a;</span>-->\
 											<span class="usuario_editar">&#xe815;</span>\
 											<span class="usuario_bloquear">&#xf13e;</span>\
 										</div>\
@@ -76,6 +77,46 @@ $(document).on({
 				alert(ajaxOptions);
 			}
 		});
+		
+		/*
+		$.ajax({
+			xhr: function() {
+				var xhr = new window.XMLHttpRequest();
+				xhr.upload.addEventListener("progress", function(evt) {
+					if (evt.lengthComputable) {
+						var percentComplete = evt.loaded / evt.total;
+						//Do something with upload progress here
+						console.log(percentComplete)
+					}
+			   }, false);
+		
+			   xhr.addEventListener("progress", function(evt) {
+				   var percentComplete;
+				   if (evt.lengthComputable) {
+					   percentComplete = evt.loaded / evt.total;
+					   //Do something with download progress
+					   //console.log("Descargado"+percentComplete)
+				   }else{
+					   
+					   percentComplete = evt.loaded / evt.target.getResponseHeader('X-Content-Length');
+					   //console.log(evt.loaded +"/"+ evt.target.getResponseHeader('X-Content-Length'))
+					   //console.log("Descargado Falso:"+percentComplete)
+				   }
+				   console.log("Descargado"+percentComplete)
+				   console.log(evt)
+			   }, false);
+		
+			   return xhr;
+			},
+			type: 'POST',
+			url: '../usuarios/usuarios',
+			data: {},
+			success: function(data){
+				//Do something on success
+				//alert(data)
+			}
+		});
+		*/
 	}
 },"#main_menu_usuarios");
 
@@ -135,7 +176,9 @@ $(document).on({
                 
         $("#sistema_modalTitulo").html('Agregar Usuario\
                     					<div id="sistema_modalCerrar">&#xe807;</div>');
-		$("#sistema_modalContenido").html('<div id="usuario_panel_izquierdo">\
+		$("#sistema_modalContenido").html('<div id="usuarios_photo_profile_add"></div>\
+										   <input type="file" name="foto" id="usuarios_subir_imagen" accept="image/*">\
+										   <div id="usuario_panel_izquierdo">\
 											   <div>Usuario <span class="sistema_campo_obligatorio">*</span></div>\
 											   <input type="text" class="usuario_input_form" >\
 											   <div class="usuarios_error_message" style="display:none;">Debes ingresar un usuario valido, por favor.</div>\
@@ -307,3 +350,58 @@ $(document).on({
         calcular_paginacion_access();
 	}
 },"#sistema_filter");
+
+$(document).on({
+	click:function(){
+		$("#usuarios_subir_imagen").trigger("click");
+	}
+},"#usuarios_photo_profile_add");
+
+$(document).on({
+	change:function(){
+		var src = createObjectURL( $(this)[0].files[0] );
+		var extension=$(this).val().split(".");
+		
+		if(extension[extension.length-1]=="jpg" || extension[extension.length-1]=="jpeg" || extension[extension.length-1]=="png"){
+			$("#usuarios_photo_profile_add").css({'background-image':"url("+src+")"});
+		}else{
+			$(this).val('');
+			$("#usuarios_photo_profile_add").removeAttr("style");
+			$("#usuarios_photo_profile_add").css({"background-image":"url("+$("#perfil_photo_profile").data("imagen")+")"});
+			alert("El formato de esa imagen no es valido.");
+		}
+	}
+},"#usuarios_subir_imagen");
+/*
+$(document).on({
+	click:function(){
+		$("#sistema_ventanaModal").removeAttr("class").addClass("usuarios_eliminarModal").fadeIn(500);
+		$("#sistema_popup").fadeIn(250);
+                
+        $("#sistema_modalTitulo").html('Eliminar Usuario\
+                    					<div id="sistema_modalCerrar">&#xe807;</div>');
+		var este=$(this).closest(".sistema_row_registro");
+		$("#sistema_modalContenido").html('¿Estas seguro que deseas eliminar a "'+este.children(".usuarios_reg_row1").text()+" "+este.children(".usuarios_reg_row2").text()+'"?\
+											<br><br>\
+											<div id="usuario_add" class="sistema_button_round" data-nombre="Si">\
+												Si\
+										   </div>')
+	}
+},".usuario_eliminar");
+*/
+
+$(document).on({
+	click:function(){
+		$("#sistema_ventanaModal").removeAttr("class").addClass("usuarios_bloquearModal").fadeIn(500);
+		$("#sistema_popup").fadeIn(250);
+                
+        $("#sistema_modalTitulo").html('Eliminar Usuario\
+                    					<div id="sistema_modalCerrar">&#xe807;</div>');
+		var este=$(this).closest(".sistema_row_registro");
+		$("#sistema_modalContenido").html('¿Estas seguro que deseas bloquear a "'+este.children(".usuarios_reg_row1").text()+" "+este.children(".usuarios_reg_row2").text()+'"?\
+											<br><br>\
+											<div id="usuario_add" class="sistema_button_round" data-nombre="Si">\
+												Si\
+										   </div>')
+	}
+},".usuario_bloquear");

@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.0.4/ninja_grocery';
+$config['base_url'] = 'http://192.168.0.5/ninja_grocery';
 //$config['base_url'] = 'http://127.0.0.1/ninja_grocery';
 
 /*
@@ -315,7 +315,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'n1nj4_gR0c3rY';
 
 /*
 |--------------------------------------------------------------------------
@@ -373,7 +373,7 @@ $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 0;
 $config['sess_save_path'] = FCPATH . 'application/cache/sesiones/';
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 300;
+$config['sess_time_to_update'] = 0;
 $config['sess_regenerate_destroy'] = FALSE;
 
 /*
@@ -393,7 +393,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 */
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
+$config['cookie_path']		= '/ninja_grocery' /*FCPATH*/ /*. 'application/cache/sesiones/'*/;
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
 

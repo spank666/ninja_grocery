@@ -44,6 +44,7 @@ body{
 	margin:0;
 	background-color:#22262e;
 	-webkit-overflow-scrolling: touch;
+	-webkit-text-size-adjust: 100%;
 }
 input{
 	-webkit-appearance: none;
@@ -104,7 +105,7 @@ input{
 }
 #sistema_header_left{
 	float:left;
-	width:250px;
+	width:100%;
 	line-height:50px;
 }
 #sistema_header_right{
@@ -116,9 +117,9 @@ input{
 	margin-left:10px;
 	vertical-align:middle;
 }
-#sistema_menu_plus{
+#sistema_menu_plus,#sistema_menu_notify{
 	color:#ffffff;
-	float:left;
+	float:right;
 	width:50px;
 	height:50px;
 	line-height:50px;
@@ -127,7 +128,8 @@ input{
     -webkit-font-smoothing: antialiased;
 	text-align:center;
 	cursor:pointer;
-	display:none;
+/*	display:none;*/
+    font-size: 18px;
 }
 #sistema_menu_button{
 	color:#ffffff;
@@ -146,7 +148,7 @@ input{
 	-ms-user-select: none;
 	user-select: none;
 }
-#sistema_menu_button:hover, #sistema_menu_plus:hover{
+#sistema_menu_button:hover, #sistema_menu_plus:hover,#sistema_menu_notify:hover{
 	background-color:#2d323d;
 }
 .sistema_button_icon{
@@ -680,6 +682,10 @@ input{
 	z-index: 90;
 	display:none;
 	overflow: auto;
+	padding:20px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 #sistema_ventanaModal{
 	margin:auto;
@@ -823,12 +829,6 @@ input{
 	clear:both;
 	height:12px;
 }
-#sistema_margenModalBottom{
-	height:20px;
-}
-#sistema_margenModalTop{
-	height:20px;
-}
 #sistema_fixBottom{
 	height:20px;
 	clear:both;
@@ -971,13 +971,13 @@ input{
 	#sistema_header_right{
 		display:none;
 	}
-	#sistema_header_left{
+/*	#sistema_header_left{
 		width:100%;
 		text-align:center;
-	}
-	#sistema_menu_plus{
+	}*/
+	/*#sistema_menu_plus{
 		display:block;
-	}
+	}*/
 	#sistema_registros_mascara{
 		border-left:1px solid #16a085;
 		border-right:1px solid #16a085;

@@ -93,12 +93,14 @@ $(document).ready(function() {
 					$("#sistema_nav_menu").append('<div class="main_submenu" id="'+data[i].submenu[j].CLASE+'">'+data[i].submenu[j].SUB+'</div>');
 					//Carga los js
 					$("head").append('<link rel="stylesheet" href="../static/css/'+data[i].submenu[j].CLASE+'.css" type="text/css" media="all" >');
+					//alert(data[i].submenu[j].CLASE)
 					$.getScript( '../static/js/'+data[i].submenu[j].CLASE+'.js' )
 					  .done(function( /*script, textStatus*/ ) {
 						//alert( textStatus+" - "+script );
 						contador++;
 						//alert(contador);
-						if(contador>=24){
+						//if(contador>=24){
+						if(contador==1){
 							cargarPrimerOpcion();
 						}
 					  })
@@ -218,3 +220,20 @@ function btn_stop_girar_bad(arg){
             $("#"+arg).html($("#"+arg).data("nombre"));
     },2000);
 }
+
+function createObjectURL ( file ) {
+	if ( window.webkitURL ) {
+		return window.webkitURL.createObjectURL( file );
+	} else if ( window.URL && window.URL.createObjectURL ) {
+		return window.URL.createObjectURL( file );
+	} else {
+		return null;
+	}
+}
+//Deshabilita el zoom en ios 10
+document.addEventListener('touchmove', function(event) {
+    event = event.originalEvent || event;
+    if(event.scale > 1) {
+      event.preventDefault();
+    }
+  }, false);

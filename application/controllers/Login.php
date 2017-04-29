@@ -66,7 +66,11 @@ class login extends CI_Controller {
             }
         }
         
-        public function real(){
+        public function ruta(){
+            echo FCPATH;
+        }
+		
+		public function real(){
             echo $this->loginModel->getRealIP();
         }
         

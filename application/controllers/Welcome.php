@@ -26,9 +26,11 @@ class Welcome extends CI_Controller {
 		
 	public function index(){
 		if($this->session->userdata('usuario')){
-			redirect(base_url('sistema')."/");
+			redirect(base_url('sistema')."/",'refresh');
 		}else{
+			ob_start('ob_gzhandler');
 			$this->load->view('login.html');
+			ob_end_flush();
 		}
 	}
 }
